@@ -1,26 +1,67 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import Attributes from "./attributes/attributes"
+import Birthday from "./attributes/birthday"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      happy: false
+    }
+  }
+  wishHappy = (e) => {
+    this.setState({happy: !this.state.happy});
+  }
+
+  render() {
+    return (
+      <div className='container'>
+        <div className="jumbotron"><h1>John</h1></div>
+        <div className='card-body'>
+          < Attributes lbs={999} yrs={999} />
+          <Birthday date="9/9/1999" isHappy={this.state.happy} />
+          {
+              this.state.happy ?
+              <button
+                className="btn btn-danger"
+                onClick={this.wishHappy}
+              >Happy Birthday
+              </button>
+              :
+              <button
+                className="btn btn-success"
+                onClick={this.wishHappy}
+              >No Happy
+              </button>
+            }
+        </div>
+
+        <div className="jumbotron"><h1>Jyohn</h1></div>
+        <div className='card-body'>
+          < Attributes lbs={9979} yrs={9979} />
+          <Birthday date="9/9/1999" isHappy={this.state.happy} />
+          {
+              this.state.happy ?
+              <button
+                className="btn btn-danger"
+                onClick={this.wishHappy}
+              >Happy Birthday
+              </button>
+              :
+              <button
+                className="btn btn-success"
+                onClick={this.wishHappy}
+              >No Happy
+              </button>
+            }
+        </div>
+
+      </div>
+
+    );
+  }
 }
+
 
 export default App;
